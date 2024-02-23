@@ -14,13 +14,6 @@ import { JwtModule, JwtService } from '@nestjs/jwt';
       useFactory: (jwtService: JwtService) => {
         return {
           server: {
-            context: ({ req, _res }) => {
-              if (req.headers?.authorization) {
-                // Validate jwt
-                return { user: { id: '123' } };
-              }
-              throw new UnauthorizedException();
-            },
           },
           gateway: {
             supergraphSdl: new IntrospectAndCompose({
@@ -29,10 +22,6 @@ import { JwtModule, JwtService } from '@nestjs/jwt';
                 { name: 'projects', url: 'http://localhost:3001/graphql' },
               ],
             }),
-            buildService: (definition: ServiceEndpointDefinition) => {
-              console.log(definition);
-              return {} as GraphQLDataSource;
-            },
           },
         };
       },
