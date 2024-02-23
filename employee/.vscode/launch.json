@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Employee Locale",
+        "skipFiles": ["<node_internals>/**"],
+        "args": ["${workspaceFolder}/src/main.ts"],
+        "runtimeArgs": ["--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register"],
+        "sourceMaps": true,
+        "cwd": "${workspaceRoot}",
+        "console": "integratedTerminal",
+        "autoAttachChildProcesses": true,
+        "restart": true,
+        "stopOnEntry": false,
+        "env": {
+          "PSG_URL":"localhost:5432",
+          "PSG_PASSWORD":"mysecretpassword",
+          "PSG_USER":"postgres"
+        }
+      }
+    ]
+  }
+  
